@@ -3,12 +3,12 @@
 #include "cuda_runtime.h"
 #include "device_launch_parameters.h"
 
-__global__ void addKernel(int* c, const int* a, const int* b) {
+__global__ void AddKernel(int* c, const int* a, const int* b) {
   int i = threadIdx.x;
   c[i] = a[i] + b[i];
 }
 
-cudaError_t addWithCuda(int* c, const int* a, const int* b, unsigned int size) {
+cudaError_t AddWithCuda(int* c, const int* a, const int* b, unsigned int size) {
   int* d_a;
   int* d_b;
   int* d_c;
@@ -55,7 +55,7 @@ cudaError_t addWithCuda(int* c, const int* a, const int* b, unsigned int size) {
   }
 
   // Launch a kernel on the GPU with one thread for each element.
-  addKernel<<<1, size>>>(d_c, d_a, d_b);
+  AddKernel<<<1, size>>>(d_c, d_a, d_b);
   cuda_status = cudaGetLastError();
   if (cuda_status != cudaSuccess) {
     fprintf(stderr, "addKernel launch failed: %s\n", cudaGetErrorString(cuda_status));
@@ -91,7 +91,7 @@ int main(int argc, const char* argv[]) {
   const int b[array_size] = {10, 20, 30, 40, 50};
   int c[array_size];
 
-  cudaError_t cuda_status = addWithCuda(c, a, b, array_size);
+  cudaError_t cuda_status = AddWithCuda(c, a, b, array_size);
   if (cuda_status != cudaSuccess) {
     fprintf(stderr, "addWithCuda failed!");
     return 1;

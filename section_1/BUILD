@@ -16,3 +16,16 @@ cc_binary(
     ],
 )
 
+cuda_library(
+    name = "s1_5_hello_cuda",
+    srcs = [
+        "s1_5_hello_cuda.cu"
+    ],
+)
+
+cc_binary(
+    name = "s1_5_hello_cuda_main",
+    deps = [
+        ":s1_5_hello_cuda"
+    ],
+)
