@@ -25,3 +25,4 @@ bazel run //examples:thrust_example_main
 ## Section 1: Introduction to CUDA Programming and CUDA Programming Model
 1. s1_4: vec add kernel
 2. s1_5: hello cuda
+3. s1_6: print thread IDs
