@@ -26,3 +26,4 @@ bazel run //examples:thrust_example_main
 1. s1_4: vec add kernel
 2. s1_5: hello cuda
 3. s1_6: print thread IDs
+4. s1_7: print block grid details

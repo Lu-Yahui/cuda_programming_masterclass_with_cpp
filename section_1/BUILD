@@ -43,3 +43,17 @@ cc_binary(
         ":s1_6_print_thread_ids_cu"
     ],
 )
+
+cuda_library(
+    name = "s1_7_print_details_cu",
+    srcs = [
+        "s1_7_print_details.cu"
+    ],
+)
+
+cc_binary(
+    name = "s1_7_print_details",
+    deps = [
+        ":s1_7_print_details_cu"
+    ],
+)
